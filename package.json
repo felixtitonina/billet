@@ -1,0 +1,34 @@
+{
+  "name": "back",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "devi": "nodemon --inspect src/server.js",
+    "test": "cross-env JEST_MOCK=true jest --runInBand --watch",
+    "test:nomock": "jest --runInBand --coverage",
+    "server": "node src/server.js",
+    "server:prod": "node src/server.js"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^7.0.0",
+    "express": "~4.16.0",
+    "helmet": "^4.4.1",
+    "joi": "^17.4.0",
+    "mongoose": "^5.5.1",
+    "mongoose-paginate-v2": "^1.3.17",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "jest": "^26.6.3",
+    "jest-extended": "^0.11.5",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "supertest": "^6.1.3"
+  }
+}
