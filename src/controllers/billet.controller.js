@@ -3,7 +3,6 @@ const {
   extendError,
   responseError
 } = require('../helpers/errors')
-const boletofunc = require('../util/boletos-desc-br/src/index')
 module.exports = {
   validate: async (req, res) => {
     try {

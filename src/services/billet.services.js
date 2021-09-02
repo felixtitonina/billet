@@ -1,4 +1,4 @@
-const barCodeService = require('../services/barCode.service')
+const { title, convenio } = require('../services/barCode.service')
 
 module.exports = {
   /**
@@ -12,7 +12,7 @@ module.exports = {
 
       let typebillet = null
       if (boleto.length === 44) {
-        typebillet = 'CODIGO_DE_BARRAS'
+        typebillet = 'boleto_DE_BARRAS'
       } if (boleto.length === 46 || 47 || 48) {
         typebillet = 'LINHA_DIGITAVEL'
       } else {
@@ -26,7 +26,7 @@ module.exports = {
         let dataBase = new Date(`1997-10-07 20:54:59.000Z`)
         dataBase.setDate(dataBase.getDate() + 8350)
         // let dataVencimento = dataBase.toISOString()
-        let returndata = await barCodeService(boleto)
+        let returndata = await title(boleto)
         return {
           data: {
             barCode: returndata.barcode,
@@ -35,6 +35,7 @@ module.exports = {
           }, status: 200
         }
       } if (typeDocumentation == 'CONVENIO') {
+        let returndata = await convenio(boleto)
         return {
           data: {
             barCode: returndata.barcode,
