@@ -12,7 +12,7 @@ module.exports = {
 
       let typebillet = null
       if (boleto.length === 44) {
-        typebillet = 'boleto_DE_BARRAS'
+        typebillet = 'CODIGO_DE_BARRAS'
       } if (boleto.length === 46 || 47 || 48) {
         typebillet = 'LINHA_DIGITAVEL'
       } else {
@@ -25,7 +25,6 @@ module.exports = {
       if (typeDocumentation == 'TITLE') {
         let dataBase = new Date(`1997-10-07 20:54:59.000Z`)
         dataBase.setDate(dataBase.getDate() + 8350)
-        // let dataVencimento = dataBase.toISOString()
         let returndata = await title(boleto)
         return {
           data: {
