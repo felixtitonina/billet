@@ -8,7 +8,10 @@ module.exports = {
    */
   validate: async (barcode) => {
     try {
+      let regex = /[@!#$%^&*()/\\a-zA-Z]/
       const boleto = barcode.replace(/( |\.|-)/g, '');
+
+      if (regex.test(boleto)) throw { message: `Quantidade de digitos permitidos 44, 46, 47, 48 e somente numeros`, status: 400 }
 
       let typebillet = null
       if (boleto.length === 44) {
@@ -16,7 +19,7 @@ module.exports = {
       } if (boleto.length === 46 || 47 || 48) {
         typebillet = 'LINHA_DIGITAVEL'
       } else {
-        throw `Quantidade de digitos informado insuficientes para validar boleto. Quantidade de digitos permitidos 44, 46, 47 e 48`
+        throw { message: `Quantidade de digitos informado insuficientes para validar boleto. Quantidade de digitos permitidos 44, 46, 47 e 48`, status: 400 }
       }
 
       // indentificar se é Documentação Título ou Documentação Convênio
