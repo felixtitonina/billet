@@ -1,6 +1,4 @@
-const validadeBilletService = require("../services/validadeBillet.service")
 const barCodeService = require('../services/barCode.service')
-const calcDigitoVerificadorService = require('../services/calcDigitoVerificador.service')
 
 module.exports = {
   /**
@@ -24,27 +22,30 @@ module.exports = {
       // indentificar se é Documentação Título ou Documentação Convênio
       let typeDocumentation = boleto.substr(0, 1) == '8' ? 'CONVENIO' : 'TITLE'
 
-      const billetValid = await validadeBilletService(boleto)
-
-      let barCode = await barCodeService(boleto)
-
-      let dataBase = new Date(`1997-10-07 20:54:59.000Z`)
-      dataBase.setDate(dataBase.getDate() + 8350)
-      let dataVencimento = dataBase.toISOString()
-
-      let digitoVerificador = calcDigitoVerificadorService(barCode.barcode)
-
-      let _data = {
-        data: {
-          boleto,
-          billetValid,
-          barCode,
-          dataVencimento,
-          digitoVerificador
-        },
-        status: 200
+      if (typeDocumentation == 'TITLE') {
+        let dataBase = new Date(`1997-10-07 20:54:59.000Z`)
+        dataBase.setDate(dataBase.getDate() + 8350)
+        // let dataVencimento = dataBase.toISOString()
+        let returndata = await barCodeService(boleto)
+        return {
+          data: {
+            barCode: returndata.barcode,
+            amount: returndata.amount,
+            expirationDate: dataBase.toISOString().substr(0, 10),
+          }, status: 200
+        }
+      } if (typeDocumentation == 'CONVENIO') {
+        return {
+          data: {
+            barCode: returndata.barcode,
+            amount: returndata.amount,
+            expirationDate: null,
+          }, status: 200
+        }
+      } else {
+        throw `Não foi possível identificar o boleto`
       }
-      return _data
+
     } catch (error) {
       throw error
     }
