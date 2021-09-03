@@ -1,4 +1,4 @@
-> status:	🚧  Desafio validador billet  🚧
+> 🚧  Desafio validador billet  🚧
 
 API, consultar linhas digitáveis de boleto de título bancário
 e pagamento de concessionárias, verificando se a mesma é válida ou não. Sendo válida e

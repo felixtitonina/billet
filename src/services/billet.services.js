@@ -16,7 +16,7 @@ module.exports = {
       let typebillet = null
       if (boleto.length === 44) {
         typebillet = 'CODIGO_DE_BARRAS'
-      } if (boleto.length === 46 || 47 || 48) {
+      } if (boleto.length === 46 || boleto.length === 47 || boleto.length === 48) {
         typebillet = 'LINHA_DIGITAVEL'
       } else {
         throw { message: `Quantidade de digitos informado insuficientes para validar boleto. Quantidade de digitos permitidos 44, 46, 47 e 48`, status: 400 }
