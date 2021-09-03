@@ -12,7 +12,6 @@ possuindo valor e/ou data de vencimento ter o retorno desses dados.
 * <p><a href="#rotas">Rotas</a></p>
 * <p><a href="#executando-os-testes">Executando os testes</a></p>
 * <p><a href="#relatório-de-cobertura-de-testes">Relatório de cobertura de Testes</a></p>
-* <p><a href="#documentação">Documentação</a></p>
 * <p><a href="#autor">Autor</a></p>
 
 
@@ -58,13 +57,18 @@ $ yarn start
 ```
 
 
-## Rotas
+## Rotas para testes
 
 | Rotas  |  HTTP Method  | Params  |  Desccrição  |
 | :---: | :---: | :---: | :---: |
 |  /boleto/:digitoBoleto |  GET |  -  | Valida o boleto |
 
+```bash
+Exemplo de uso: 
+[GET]
+localhost:8080/boleto/836800000017 100400730071 805521786006 003449999709
 
+```
 ## Testes de Requisições
 
 ### Via Postman

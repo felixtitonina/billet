@@ -1,13 +1,22 @@
 {
   "name": "back",
   "version": "0.1.0",
+  "apidoc": {
+    "title": "Api billet",
+    "url": "http://localhost:8080",
+    "version": "0.0.1",
+    "order": [
+      "Error",
+      "Define",
+      "PostTitleAndError",
+      "PostError"
+    ]
+  },
   "scripts": {
     "start": "node src/server.js",
     "devi": "nodemon --inspect src/server.js",
     "test": "cross-env JEST_MOCK=true jest --runInBand --watch",
-    "test:nomock": "jest --runInBand --coverage",
-    "server": "node src/server.js",
-    "server:prod": "node src/server.js"
+    "docs": "apidoc -i src/ -o src/apidoc/"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
@@ -19,6 +28,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "apidoc": "^0.29.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
