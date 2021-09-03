@@ -88,9 +88,6 @@ $ yarn test
 
 
 
-## Relatório de cobertura de Testes
-
-Você pode ver o relatório de cobertura dentro ``` tests/coverage ```. Eles são criados automaticamente após a execução dos testes.
 
 
 ## Autor
