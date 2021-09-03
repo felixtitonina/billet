@@ -12,7 +12,6 @@ const responseError = (res, error) => {
   let status = error.status
   let message = error.message || error.error || error
   if (typeof status !== 'number') status = 500
-  console.log(message)
   return res.status(status).send({ error: message })
 }
 
